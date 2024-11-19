@@ -3,12 +3,16 @@
 
 int main(int ac, char **av)
 {
-    int i;
-    int j;
+    t_stack_node *a;
+    t_stack_node *b;
 
-    i = 0;
-    j = 0;
+    a = NULL;
+    b = NULL;
+    if(ac == 1 || ac == 2 && !av[1][0])
+        return(1);
+    else if(av[1])
+        av = split(av[1], " ");
 
-    if(!*av ||( ac = 2 && av[2][] ))
-        return(0);
+    stack_int(av);
+        
 }
