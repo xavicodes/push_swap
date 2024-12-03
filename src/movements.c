@@ -1,9 +1,22 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   movements.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: xaviermonteiro <xaviermonteiro@student.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/19 18:23:03 by xaviermonte       #+#    #+#             */
+/*   Updated: 2024/11/27 15:13:21 by xaviermonte      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
+#include "/Users/xaviermonteiro/Desktop/42/PROJECTS/push_swap/push_swap.h"
 
 //-----------ROTATE
 void ra(t_stack_node **stack_a, bool check_print)
 {
-    if(*stack_a == NULL ||(stack_a)->next == NULL)
+    if(*stack_a == NULL ||(*stack_a)->next == NULL)
         return;
     t_stack_node *last;
     t_stack_node *first;

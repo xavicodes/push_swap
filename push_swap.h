@@ -1,14 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: xaviermonteiro <xaviermonteiro@student.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/19 18:24:27 by xaviermonte       #+#    #+#             */
+/*   Updated: 2024/11/29 12:08:59 by xaviermonte      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #ifndef PUSH_SWAP.H
 #define  PUSH_SWAP.H
 
-#include "../push_swap/libft/libft.h"
+//#include ".libft/libft.h"
 #include <stdbool.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <limits.h>
+
 
 typedef struct s_stack
 {
-	int				value;
+	int				nbr;
 	int				index;
 	int				pos;
 	int				target_pos;
@@ -19,7 +34,9 @@ typedef struct s_stack
 
 //-------------------ERROR_HANDLEING------------------------
 void check_ifnumber(char **argv);
-
+void exit_error(t_stack_node **stack)
+int syntax_error(char *str);
+void free_stack( t_stack_node **stack)
 
 
 
@@ -35,6 +52,8 @@ void rrb(t_stack_node **stack_b,bool check_print);
 void rr(t_stack_node **stack_a, t_stack_node **stack_b);
 void rrr(t_stack_node **stack_a, t_stack_node **stack_b);
 
+//------------------ALGORITMO----------------------------
+void sort_three(t_stack_node **a);
 
 
 
@@ -43,4 +62,17 @@ void rrr(t_stack_node **stack_a, t_stack_node **stack_b);
 
 //------------------STACK MANIPULATION---------------------
 t_stack_node *get_last_node(t_stack_node **stack);
+void stack_add_bottom(t_stack_node *stack, t_stack_node *new_node);
+t_stack_node   **find_biggest_nbr(t_stack_node *stack);
+
+
+//------------------STACK CREATION-------------------------
+t_stack_node *init_stack(int ac,char **av);
+t_stack_node *stack_new(int nbr);
+
+//-------------------EXTRAS---------------------------------
+int isdigit(char c);
+int ft_atoi(char *nbr);
+
 #endif
+
