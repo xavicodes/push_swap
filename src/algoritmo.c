@@ -6,7 +6,7 @@
 /*   By: xaviermonteiro <xaviermonteiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 18:22:55 by xaviermonte       #+#    #+#             */
-/*   Updated: 2024/11/29 11:43:18 by xaviermonte      ###   ########.fr       */
+/*   Updated: 2024/12/03 13:02:07 by xaviermonte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,22 @@
 
 
 
-stack_is_sorted(&a);
+int stack_is_sorted(t_stack_node **stack)
+{
+        t_stack_node *temp;
+
+        temp = *stack;
+        if(!*stack)
+                return(0);
+
+        while(temp->next)
+        {
+                if(temp->nbr > temp->next->nbr)
+                        return(0);
+        temp = temp->next;
+        }
+        return(1);
+}
 
 
 void sort_three(t_stack_node **a)

@@ -6,7 +6,7 @@
 /*   By: xaviermonteiro <xaviermonteiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 18:24:27 by xaviermonte       #+#    #+#             */
-/*   Updated: 2024/11/29 12:08:59 by xaviermonte      ###   ########.fr       */
+/*   Updated: 2024/12/03 13:13:32 by xaviermonte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ typedef struct s_stack
 
 //-------------------ERROR_HANDLEING------------------------
 void check_ifnumber(char **argv);
-void exit_error(t_stack_node **stack)
+void exit_error(t_stack_node **stack);
 int syntax_error(char *str);
-void free_stack( t_stack_node **stack)
+void free_stack( t_stack_node **stack);
 
 
 
@@ -54,6 +54,7 @@ void rrr(t_stack_node **stack_a, t_stack_node **stack_b);
 
 //------------------ALGORITMO----------------------------
 void sort_three(t_stack_node **a);
+int stack_is_sorted(t_stack_node **stack);
 
 
 
@@ -61,8 +62,9 @@ void sort_three(t_stack_node **a);
 
 
 //------------------STACK MANIPULATION---------------------
+
 t_stack_node *get_last_node(t_stack_node **stack);
-void stack_add_bottom(t_stack_node *stack, t_stack_node *new_node);
+void stack_add_bottom(t_stack_node **stack, t_stack_node *new_node);
 t_stack_node   **find_biggest_nbr(t_stack_node *stack);
 
 
@@ -73,6 +75,7 @@ t_stack_node *stack_new(int nbr);
 //-------------------EXTRAS---------------------------------
 int isdigit(char c);
 int ft_atoi(char *nbr);
+int stack_len(t_stack_node **stack);
 
 #endif
 

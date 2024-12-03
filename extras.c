@@ -6,14 +6,29 @@
 /*   By: xaviermonteiro <xaviermonteiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 18:24:11 by xaviermonte       #+#    #+#             */
-/*   Updated: 2024/11/28 17:58:33 by xaviermonte      ###   ########.fr       */
+/*   Updated: 2024/12/03 13:24:53 by xaviermonte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "push_swap.h"
 
+int stack_len(t_stack_node **stack)
+{
+    int i;
+    t_stack_node *temp;
 
+    i = 0;
+    temp = *stack;
+    if(!*stack)
+        return(0);
+    while(temp->next != NULL)
+        {
+            i++;
+            temp = temp->next;
+        }
+        return(i);
+}
 t_stack_node *get_last_node(t_stack_node **stack)
 {
     t_stack_node *temp;

@@ -6,7 +6,7 @@
 /*   By: xaviermonteiro <xaviermonteiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 18:23:51 by xaviermonte       #+#    #+#             */
-/*   Updated: 2024/11/29 12:02:22 by xaviermonte      ###   ########.fr       */
+/*   Updated: 2024/12/03 13:18:04 by xaviermonte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_stack_node *stack_new(int nbr)
 	new_node->next = NULL;
         return(new_node);
 }
-void stack_add_bottom(t_stack_node *stack, t_stack_node *new_node)
+void stack_add_bottom(t_stack_node **stack, t_stack_node *new_node)
 {
         t_stack_node *tail;
         if(!new_node)
@@ -41,7 +41,7 @@ void stack_add_bottom(t_stack_node *stack, t_stack_node *new_node)
                 *stack = new_node;
                 return;
         }
-        tail = get_last_node(*stack);
+        tail = get_last_node(stack);
         tail->next = new_node;
 }
 t_stack_node *init_stack(int ac,char **av)
@@ -54,7 +54,7 @@ t_stack_node *init_stack(int ac,char **av)
         while(av[i])
         {
                 if(error_syntax(av[i]))
-                        error_free(a);
+                        free_stack(stack_a);
                 number = atoi(av[i]);
                 if(number > INT_MAX ||number < INT_MIN)
                         return;
@@ -69,4 +69,3 @@ t_stack_node *init_stack(int ac,char **av)
 
 
 
-stack_len
