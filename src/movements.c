@@ -6,14 +6,74 @@
 /*   By: xaviermonteiro <xaviermonteiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 18:23:03 by xaviermonte       #+#    #+#             */
-/*   Updated: 2024/11/27 15:13:21 by xaviermonte      ###   ########.fr       */
+/*   Updated: 2024/12/03 15:00:43 by xaviermonte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "/Users/xaviermonteiro/Desktop/42/PROJECTS/push_swap/push_swap.h"
+//---------------SWAP-----------------
 
-//-----------ROTATE
+void sa(t_stack_node **stack_a, bool check_print)
+{
+        if((*stack_a) != NULL)
+                return;
+        t_stack_node *temp;
+
+        temp = (*stack_a)->next;
+        (*stack_a)->next = temp->next;
+        temp->next = *stack_a;  
+        *stack_a = temp;
+        if(check_print == true)
+        printf("sa");
+}
+void sb(t_stack_node **stack_b, bool check_print)
+{
+        if((*stack_b) != NULL)
+                return;
+        t_stack_node *temp;
+
+        temp = (*stack_b)->next;
+        (*stack_b)->next = temp->next;
+        temp->next = *stack_b;  
+        *stack_b = temp;
+        if(check_print == true)
+        printf("sb");
+
+}
+//-----------------PUSH------------------------- NEEDS TO BE WORKED ON NOT FINISHED JUST A SQUEMATIC
+
+void pa(t_stack_node **stack_a,t_stack_node **stack_b, bool check_print)
+{
+        if(*stack_a != NULL)
+                return(NULL);
+        t_stack_node *temp;
+
+        temp = *stack_b;
+        (*stack_a)->next = *stack_a;
+        temp = *stack_a;
+        if(check_print == true)
+        printf("pa");
+
+}
+
+void pb(t_stack_node **src,t_stack_node **dest, bool check_print) //WARNING NOT FINISHED
+{
+        if(*src != NULL)
+                return(NULL);
+        t_stack_node *temp;
+
+        temp = (*src)->next;
+        (*src)->next = *dest;
+        temp = *src;
+        if(check_print == true)
+        printf("pb");
+
+}
+
+
+
+//-----------ROTATE--------------------------
 void ra(t_stack_node **stack_a, bool check_print)
 {
     if(*stack_a == NULL ||(*stack_a)->next == NULL)
@@ -88,7 +148,7 @@ void rrb(t_stack_node **stack_b,bool check_print)
         printf("rrb");
 }
 
-//-------------------BOTH AT THE SAME TIME--------------------
+//-------------------BOTH AT THE SAME TIME (ra+rb=rr)(rra+rrb=rrr)(sa+sb=ss)--------------------
 
 void rr(t_stack_node **stack_a, t_stack_node **stack_b)
 {
@@ -100,9 +160,18 @@ void rr(t_stack_node **stack_a, t_stack_node **stack_b)
 }
 void rrr(t_stack_node **stack_a, t_stack_node **stack_b)
 {
-    bool print = false;
+    bool check_print = false;
 
-    rra(stack_a,print);
-    rrb(stack_b,print);
+    rra(stack_a,check_print);
+    rrb(stack_b,check_print);
     printf("rrr");
+}
+
+void ss(t_stack_node **stack_a, t_stack_node **stack_b)
+{
+    bool check_print = false;
+
+    sa(stack_a,check_print);
+    sb(stack_b,check_print);
+    printf("ss");
 }

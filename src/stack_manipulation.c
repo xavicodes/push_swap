@@ -6,7 +6,7 @@
 /*   By: xaviermonteiro <xaviermonteiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 18:23:51 by xaviermonte       #+#    #+#             */
-/*   Updated: 2024/12/03 13:18:04 by xaviermonte      ###   ########.fr       */
+/*   Updated: 2024/12/03 14:13:03 by xaviermonte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,3 @@ t_stack_node *init_stack(int ac,char **av)
         }
         return(stack_a);
 }
-
-
-

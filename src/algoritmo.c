@@ -6,7 +6,7 @@
 /*   By: xaviermonteiro <xaviermonteiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 18:22:55 by xaviermonte       #+#    #+#             */
-/*   Updated: 2024/12/03 13:02:07 by xaviermonte      ###   ########.fr       */
+/*   Updated: 2024/12/03 14:08:52 by xaviermonte      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,7 @@ void sort_three(t_stack_node **a)
 
 }
 
-sort_stack(&a, &b);
+void sort_stack(t_stack_node **a, t_stack_node **b)
+{
+
+}
