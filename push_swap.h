@@ -11,24 +11,25 @@
 /* ************************************************************************** */
 
 
-#ifndef PUSH_SWAP.H
-#define  PUSH_SWAP.H
+#ifndef	PUSH_SWAP_H
+#define	PUSH_SWAP_H 
 
-//#include ".libft/libft.h"
+
 #include <stdbool.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <limits.h>
+#include <stdlib.h>
 
 
 typedef struct s_stack
 {
 	int				nbr;
 	int				index;
-	int				pos;
-	int				target_pos;
-	int				cost_a;
-	int				cost_b;
+	int				push_cost;
+	bool			above_medium;
+	bool			cheapest;
+	struct s_stack *target_node;
 	struct s_stack	*next;
 }	t_stack_node;
 
@@ -50,25 +51,24 @@ void sb(t_stack_node **stack_b, bool check_print);
 void ss(t_stack_node **stack_a, t_stack_node **stack_b);
 //pa
 //pb
-
 //------------------ALGORITMO----------------------------
+
 void sort_three(t_stack_node **a);
-int stack_is_sorted(t_stack_node **stack);
+bool stack_is_sorted(t_stack_node **stack);
 void sort_stack(t_stack_node **a, t_stack_node **b);//----------IN FAULT-------
-
-//------------------STACK MANIPULATION---------------------
-
-t_stack_node *get_last_node(t_stack_node **stack);
-void stack_add_bottom(t_stack_node **stack, t_stack_node *new_node);
-t_stack_node   **find_biggest_nbr(t_stack_node *stack);
-int stack_len(t_stack_node **stack);
 
 //------------------STACK CREATION-------------------------
 t_stack_node *init_stack(int ac,char **av);
 t_stack_node *stack_new(int nbr);
+t_stack_node *get_last_node(t_stack_node **stack);
+void stack_add_bottom(t_stack_node **stack, t_stack_node *new_node);
 
 //-------------------EXTRAS---------------------------------
-int isdigit(char c);
+int ft_isdigit(char c);
 int ft_atoi(char *nbr);
+void set_index(t_stack_node *stack);
+void find_cheapest(t_stack_node *stack);
+t_stack_node   **find_biggest_nbr(t_stack_node *stack);
+int stack_len(t_stack_node **stack);
 
 #endif
