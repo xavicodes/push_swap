@@ -14,7 +14,7 @@
 //#include "/Users/xaviermonteiro/Desktop/42/PROJECTS/push_swap/push_swap.h"
 
 
-static int count_words(char *s, char c) 
+/* static int count_words(char *s, char c) 
 {
     int count = 0;
     bool inside_word = false;
@@ -92,7 +92,7 @@ char **split(char *s, char c)
     result_array[i] = NULL; // Null-terminate the result array
 
     return result_array;
-}
+} */
 
 /* int main() 
 {
@@ -120,3 +120,133 @@ char **split(char *s, char c)
     return 0;
 } */
 
+
+
+int count_words(char *str, char del)
+{
+    int i;
+    int inside_word;
+    int word_count;
+
+    word_count = 0;
+    inside_word = 0;
+    i = 0;
+    while(str[i])
+    {
+    while(str[i] == del && inside_word == 1)
+    {
+        i++;
+        inside_word = 0;
+    }
+    while(str[i] != del && inside_word != 1)
+    {
+        i++;
+        inside_word = 1;
+        word_count++;
+    }
+    i++;
+    }
+    return(word_count);
+}
+
+char *get_next_word(char *str, char del)
+{   
+    int i;
+    int len;
+    char *word_result;
+    static int cursor;
+
+//    word_result = NULL;
+    if(!cursor)
+        cursor = 0;
+    len = 0;
+    i = 0;
+    while(str[cursor] == del)
+        cursor++;
+    while(str[cursor+len] != del)
+           len++;
+
+        word_result = malloc(sizeof(char) * len + 1);
+    while(i < len)
+        {
+            word_result[i] = str[cursor];
+            i++;
+            cursor++;
+        }
+    word_result[i] = '\0';
+    return(word_result);
+}
+
+
+char **split(char *str, char del)
+{
+    char **result;
+    int i;
+    int word_count;
+
+    i = 0;
+    word_count = count_words(str,del);
+
+    if(word_count == 0)
+        return(NULL);
+    
+    result = malloc(sizeof(char *) * word_count + 1);
+        if(!result)
+            return(NULL);
+    while(i < word_count )
+        {
+            result[i] = get_next_word(str, del);
+            if(!result[i])
+            {
+                while(i >= 0)
+                    free(result[i--]);
+                free(result);
+            }
+            i++;
+        }
+        return(result);
+}
+ int main(void)
+{   char *str = "    hello my friend   petrenko o ";
+    int i = 0;
+    char **result;
+
+    result = split(str, ' ');
+    while(result[i])
+    {
+        printf("nbr :%d   word :%s\n",i,result[i]);
+        i++;
+    }
+    while(i >= 0)
+            free(result[i--]);
+    free(result);
+
+    return(0);
+
+
+} 
+/* int main(void)  TEST FOR GET_NEXT_WORD
+{
+    char *str = "hello my friend     d";
+    char *word;
+
+    word = get_next_word(str,' ', 8);
+    printf("string :%s\n word :%s\n,",str, word);
+
+    free(word);
+} */
+
+
+
+/*
+    TEST FOR COUNT_WORDS
+ int main(void)
+{
+    int words = 0;
+    char *str = "      hello my friend     ";
+
+    words = count_words(str, ' ');
+    printf("string: %s\nword counter: %d\n", str,words);
+
+} 
+*/;
